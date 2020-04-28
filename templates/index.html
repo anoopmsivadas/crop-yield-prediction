@@ -1,0 +1,85 @@
+<html>
+<head>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+<style>
+.border-right{
+     border-right: 1px solid;}
+.row{margin-top:50px}
+.col{height:100vh}
+.predictor{
+            margin-top:5vh;
+            margin-bottom:0px;
+            padding:15px}
+.output{
+            margin-top:10vh;
+            padding:15px}
+
+</style>
+</head>
+<body>
+
+<nav class="navbar navbar-dark bg-success fixed-top">
+  <a class="navbar-brand" href="#"><b>Crop Yield Prediction</b></a>
+</nav>
+<div class="container">
+  <div class="row">
+    <div class="col border-right">
+      <div class="predictor card">
+      
+       <form class="form-horizontal" method="POST" action="">
+           
+           <div class="form-group">
+            <label for="algorithm" class="control-label">Algorithm</label>
+            <select name="algorithm" class="selectpicker form-control">
+              {% for algorithm in algorithms %}
+              <option value="{{ algorithm }}" >{{ algorithm }}</option>
+              {% endfor %}
+            </select><br>
+            <h5>Crop Details</h5>
+            <label class="control-label">State</label>
+            <select name="state" class="selectpicker form-control">
+              {% for state in states %}
+              <option value="{{ state }}" >{{ state }}</option>
+              {% endfor %}
+            </select>
+            <label class="control-label">Year</label>
+            <input class="form-control" type="text" name="year">
+            <label class="control-label">Type( Season )</label>
+              <select name="season" class="selectpicker form-control">
+               {% for season in seasons %}
+              <option value="{{ season }}">{{ season }}</option>
+               {% endfor %}
+            </select>
+            <label class="control-label">Crop Name</label>
+              <select name="crop" class="selectpicker form-control">
+              {% for crop in crops %}
+              <option value="{{ crop }}">{{ crop }}</option>
+              {% endfor %}
+            </select>
+            <label class="control-label">Area</label>
+            <input class="form-control" name="area">
+            <input type="submit" class="btn btn-outline-success" value="Predict" class="form-control" >
+            </div>
+       </form>
+     </div>
+      
+   </div>
+   <div class="col ">
+     <div class="output card">
+         <h5>Output </h5>
+         <br>
+         <br> 
+         <h6>Predicted Production: {{ production }} </h6>
+         <h6>Accuracy: {{ accuracy }} </h6>
+          </div>      
+    </div>
+  </div>
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}></script>
+</body>
+</html>
