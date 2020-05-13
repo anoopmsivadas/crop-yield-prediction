@@ -34,7 +34,8 @@
               {% for algorithm in algorithms %}
               <option value="{{ algorithm }}" >{{ algorithm }}</option>
               {% endfor %}
-            </select><br>
+            </select>
+               <hr>
             <h5>Crop Details</h5>
             <label class="control-label">State</label>
             <select name="state" class="selectpicker form-control">
@@ -42,8 +43,8 @@
               <option value="{{ state }}" >{{ state }}</option>
               {% endfor %}
             </select>
-            <label class="control-label">Year</label>
-            <input class="form-control" type="text" name="year">
+               <br>
+            <input class="form-control" type="text" name="year" placeholder="Year">
             <label class="control-label">Type( Season )</label>
               <select name="season" class="selectpicker form-control">
                {% for season in seasons %}
@@ -56,8 +57,13 @@
               <option value="{{ crop }}">{{ crop }}</option>
               {% endfor %}
             </select>
-            <label class="control-label">Area</label>
-            <input class="form-control" name="area">
+               <br>
+            <input class="form-control" name="area" placeholder="Area">
+               <br>
+              Minerals <input type="text" name="n" size="10" placeholder="Nitrogen">
+               <input type="text" name="p" size="10" placeholder="Phosphorous">
+               <input type="text" name="k" size="10" placeholder="Potassium">
+               <hr>
             <input type="submit" class="btn btn-outline-success" value="Predict" class="form-control" >
             </div>
        </form>
@@ -70,7 +76,9 @@
          <br>
          <br> 
          <h6>Predicted Production: {{ production }} </h6>
-         <h6>Accuracy: {{ accuracy }} </h6>
+         <h6>Model Accuracy: {{ accuracy }} </h6><br>
+         Fertilzer : {{ fert_name }} <br>
+         <img src="{{chart}}" height="250px" width="330px">
           </div>      
     </div>
   </div>
